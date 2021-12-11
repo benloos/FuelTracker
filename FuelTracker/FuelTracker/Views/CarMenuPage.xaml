@@ -21,7 +21,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Style="{StaticResource HeaderBar}">
                 <Button Style="{StaticResource BackButton}" 
                         Command="{Binding GoBackCommand}"/>
                 <Label Style="{StaticResource Header}" Text="{Binding Title}"
@@ -30,8 +30,8 @@
                        Padding="10"/>
                 <Button Style="{StaticResource BackButton}" Text=""/>
             </StackLayout>
-            <StackLayout>
-                <Grid Margin="10">
+            <StackLayout Margin="10">
+                <Grid>
                     <Button Style="{StaticResource MenuButton}" 
                             Grid.Row="0" Text="Fuel"
                             Command="{Binding FuelCommand}">

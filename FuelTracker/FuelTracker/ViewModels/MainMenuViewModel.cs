@@ -70,12 +70,12 @@ namespace FuelTracker.ViewModels
         async Task Refresh()
         {
             IsBusy = true;
-            
+
             //await Task.Delay(500);
 
-            Cars.Clear();
-
             var cars = await CarServices.GetCar();
+
+            Cars.Clear();
 
             Cars.AddRange(cars);
 

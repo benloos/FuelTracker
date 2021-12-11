@@ -21,7 +21,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Style="{StaticResource HeaderBar}">
                 <Button Style="{StaticResource BackButton}" 
                         Command="{Binding GoBackCommand}"/>
                 <Label Style="{StaticResource Header}" Text="{Binding Title}"
@@ -58,7 +58,8 @@
                                Keyboard="Numeric" MaxLength="3"
                                ClearButtonVisibility="WhileEditing"/>
 
-                        <Frame Grid.Row="6" Grid.ColumnSpan="15" IsClippedToBounds="True" BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray}, Dark={StaticResource SystemGrayDark}}" 
+                        <Frame Grid.Row="6" Grid.ColumnSpan="15" IsClippedToBounds="True" 
+                               BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray5}, Dark={StaticResource SystemGrayDark}}" 
                                HorizontalOptions="Fill" CornerRadius="5">
                             <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Margin="-20" Padding="0"
                                        HorizontalOptions="Start" VerticalOptions="Fill" 

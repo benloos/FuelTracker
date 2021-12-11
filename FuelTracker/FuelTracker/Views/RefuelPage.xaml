@@ -13,7 +13,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Style="{StaticResource HeaderBar}">
                 <Button Style="{StaticResource BackButton}" 
                         Command="{Binding GoBackCommand}"/>
                 <Label Style="{StaticResource Header}" Text="{Binding Title}"
