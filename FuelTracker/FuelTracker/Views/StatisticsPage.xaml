@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FuelTracker.Views.StatisticsPage"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels"
+             BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
+             x:DataType="viewmodels:StatisticsViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:StatisticsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Style="{StaticResource BackButton}" 
+                        Command="{Binding GoBackCommand}"/>
+                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Padding="10"/>
+                <Button Style="{StaticResource BackButton}" Text=""/>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

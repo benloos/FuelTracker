@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
+    xmlns:model="clr-namespace:FuelTracker.Models"
+    x:Class="FuelTracker.Views.MainMenuPage"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
+    x:DataType="viewmodels:MainMenuViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:MainMenuViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <model:FuelPercentageConverter x:Key="FuelPercentage"/>
+            <model:DistanceFormatConverter x:Key="DistanceFormat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RefreshView Command="{Binding RefreshCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 RefreshColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}">
+        <CollectionView ItemSizingStrategy="MeasureAllItems"
+                        ItemsSource="{Binding Cars}"
+                        SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SelectCommand}">
+            
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="Center" Text="No cars" FontSize="25" FontFamily="SFPI"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Car">
+                    <SwipeView Padding="10" BackgroundColor="Transparent">
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+                                           CommandParameter="{Binding .}"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainMenuViewModel}}, Path=DeleteCommand}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid>
+                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="34"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9"
+                                       HorizontalTextAlignment="Start" VerticalTextAlignment="End" 
+                                       FontSize="25" Text="{Binding Name}"/>
+                                    <Label Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="6"
+                                       HorizontalTextAlignment="End" VerticalTextAlignment="End" 
+                                       FontSize="18" Text="{Binding Mileage, Converter={StaticResource DistanceFormat}}"/>
+                                    <Frame Grid.Row="1" Grid.ColumnSpan="15" IsClippedToBounds="True" 
+                                           BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray}, Dark={StaticResource SystemGrayDark}}" 
+                                       HorizontalOptions="Fill" CornerRadius="5">
+                                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Margin="-20" Padding="0"
+                                                   HorizontalOptions="Start" VerticalOptions="Fill" 
+                                                   WidthRequest="{Binding FuelLevel, Converter={StaticResource FuelPercentage}}"/>
+                                    </Frame>
+                                    <Rectangle Grid.Row="1" Grid.Column="3" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="End"/>
+                                    <Rectangle Grid.Row="1" Grid.Column="7" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="Center"/>
+                                    <Rectangle Grid.Row="1" Grid.Column="11" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="Start"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Header>
+                <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
+                    <Label Style="{StaticResource Header}" Text="{Binding Title}" 
+                           Padding="10" HorizontalOptions="Start"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                        <ImageButton Style="{StaticResource IconImageButton}" 
+                            Command="{Binding AddCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Plus}" 
+                                                 Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <ImageButton Style="{StaticResource IconImageButton}" 
+                                Command="{Binding SettingsCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Cog}" 
+                                                 Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                </StackLayout>
+            </CollectionView.Header>
+        </CollectionView>
+    </RefreshView>
+
+</ContentPage>

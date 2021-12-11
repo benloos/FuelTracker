@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FuelTracker.Views.SettingsPage"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
+             BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
+             x:DataType="viewmodels:SettingsViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:SettingsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Style="{StaticResource BackButton}" 
+                        Command="{Binding GoBackCommand}"/>
+                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Padding="10"/>
+                <Button Style="{StaticResource BackButton}" Text=""/>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Theme" FontSize="25" Margin="0,-15"/>
+                        <Button Grid.Row="1" Grid.Column="0" 
+                                Style="{StaticResource IconButton}"
+                                Command="{Binding ThemeCommand}"
+                                CommandParameter="0"
+                                Text="System">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.UserCog}" 
+                                                 Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button Grid.Row="1" Grid.Column="1" 
+                                Style="{StaticResource IconButton}"
+                                Command="{Binding ThemeCommand}"
+                                CommandParameter="1"
+                                Text="Light">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Sun}" 
+                                                 Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button Grid.Row="1" Grid.Column="2" 
+                                Style="{StaticResource IconButton}"
+                                Command="{Binding ThemeCommand}"
+                                CommandParameter="2"
+                                Text="Dark">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Moon}" 
+                                                 Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                            </Button.ImageSource>
+                        </Button>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Units" FontSize="25" Margin="0,-15"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

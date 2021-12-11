@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FuelTracker.Views.CarMenuPage"
+             xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
+             xmlns:model="clr-namespace:FuelTracker.Models"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
+             x:DataType="viewmodels:CarMenuViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:CarMenuViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <model:FuelPercentageConverter x:Key="FuelPercentage"/>
+            <model:DistanceFormatConverter x:Key="DistanceFormat"/>
+            <model:CurrencyFormatConverter x:Key="CurrencyFormat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Style="{StaticResource BackButton}" 
+                        Command="{Binding GoBackCommand}"/>
+                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Padding="10"/>
+                <Button Style="{StaticResource BackButton}" Text=""/>
+            </StackLayout>
+            <StackLayout>
+                <Grid Margin="10">
+                    <Button Style="{StaticResource MenuButton}" 
+                            Grid.Row="0" Text="Fuel"
+                            Command="{Binding FuelCommand}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.GasPump}" 
+                                             Size="50" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                        </Button.ImageSource>
+                    </Button>
+                    <Button Style="{StaticResource MenuButton}" 
+                            Grid.Row="1" Text="Mileage"
+                            Command="{Binding MileageCommand}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Car}" 
+                                             Size="50" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                        </Button.ImageSource>
+                    </Button>
+                    <Button Style="{StaticResource MenuButton}" 
+                            Grid.Row="2" Text="Statistics"
+                            Command="{Binding StatisticsCommand}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.ChartBar}" 
+                                             Size="50" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
