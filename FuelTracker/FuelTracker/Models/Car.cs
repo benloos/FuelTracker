@@ -8,6 +8,7 @@ namespace FuelTracker.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int FuelLevel { get; set; }
+        public int TankCapacity { get; set; }
         public int Mileage { get; set; }
 
     }

@@ -9,12 +9,14 @@ namespace FuelTracker.ViewModels
     public class AddCarViewModel : BaseViewModel
     {
 
-        string name, mileageLabel;
-        int fuelLevel, mileage;
+        string name, mileageLabel, capacityLabel;
+        int fuelLevel, tankCapacity, mileage;
         public string Name { get => name; set => SetProperty(ref name, value); }
         public int FuelLevel { get => fuelLevel; set => SetProperty(ref fuelLevel, value); }
+        public int TankCapacity { get => tankCapacity; set => SetProperty(ref tankCapacity, value); }
         public int Mileage { get => mileage; set => SetProperty(ref mileage, value); }
         public string MileageLabel { get => mileageLabel; set => SetProperty(ref mileageLabel, "Mileage (" + value + "):"); }
+        public string CapacityLabel { get => capacityLabel; set => SetProperty(ref capacityLabel, "Tank Capacity (" + value + "):"); }
         public AsyncCommand SaveCommand { get; }
         public AsyncCommand GoBackCommand { get; }
 
@@ -23,6 +25,7 @@ namespace FuelTracker.ViewModels
             Title = "Add Car";
 
             MileageLabel = App.GlobalUnitDistance;
+            CapacityLabel = App.GlobalUnitVolume;
 
             SaveCommand = new AsyncCommand(Save);
             GoBackCommand = new AsyncCommand(GoBack);
@@ -39,7 +42,7 @@ namespace FuelTracker.ViewModels
                 return;
             }
 
-            await CarServices.AddCar(name, fuelLevel, mileage);
+            await CarServices.AddCar(name, fuelLevel, tankCapacity, mileage);
 
             await Shell.Current.GoToAsync("..");
         }

@@ -7,9 +7,19 @@ namespace FuelTracker
 {
     public partial class App : Application
     {
-        public static string GlobalUnitDistance { get; set; }
-        public static string GlobalUnitCurrency { get; set; }
-        public static int GlobalUnitWidth { get; set; }
+        public static string[] unitsDistance = { "km", "mi", "bananas" };
+        public static int selectedDistance = 0;
+        public static string GlobalUnitDistance { get => unitsDistance[selectedDistance]; }
+
+        public static string[] unitsCurrency = { "€", "$", "£" };
+        public static int selectedCurrency = 0;
+        public static string GlobalUnitCurrency { get => unitsCurrency[selectedCurrency]; }
+
+        public static string[] unitsVolume = { "L", "gal" };
+        public static int selectedVolume = 0;
+        public static string GlobalUnitVolume { get => unitsCurrency[selectedVolume]; }
+
+        public static int GlobalUnitWidth;
         public App()
         {
             InitializeComponent();
@@ -17,8 +27,6 @@ namespace FuelTracker
             TheTheme.SetTheme();
 
             GlobalUnitWidth = 333;
-            GlobalUnitDistance = "km";
-            GlobalUnitCurrency = "€";
 
             MainPage = new AppShell();
         }

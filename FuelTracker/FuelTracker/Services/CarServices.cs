@@ -1,6 +1,5 @@
 ﻿using FuelTracker.Models;
 using SQLite;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,7 +22,7 @@ namespace FuelTracker.Services
             }
         }
 
-        public static async Task AddCar(string name, int fuelLevel, int mileage)
+        public static async Task AddCar(string name, int fuelLevel, int tankCapacity, int mileage)
         {
             await Init();
 
@@ -31,6 +30,7 @@ namespace FuelTracker.Services
             {
                 Name = name,
                 FuelLevel = fuelLevel,
+                TankCapacity = tankCapacity,
                 Mileage = mileage
             };
 

@@ -17,9 +17,7 @@ namespace FuelTracker.ViewModels
             get => carId; set
             {
                 SetProperty(ref carId, value);
-                Title = CarId;
-                //CurrentCar = CarServices.GetCar(int.Parse(CarId)).Result;
-                //Title = CurrentCar.Name;
+                _ = Refresh();
             }
         }
         public Car currentCar;
@@ -33,6 +31,19 @@ namespace FuelTracker.ViewModels
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+        }
+
+        async Task Refresh()
+        {
+            IsBusy = true;
+
+            //await Task.Delay(500);
+
+            CurrentCar = (await CarServices.GetCar(int.Parse(CarId)));
+
+            Title = CurrentCar.Name;
+
+            IsBusy = false;
         }
     }
 }

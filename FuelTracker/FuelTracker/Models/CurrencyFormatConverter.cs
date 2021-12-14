@@ -16,6 +16,8 @@ namespace FuelTracker.Models
                     return String.Format("{0:n}", (int)value) + App.GlobalUnitCurrency;
                 case "$":
                     return App.GlobalUnitCurrency + String.Format("{0:n}", (int)value);
+                case "£":
+                    return App.GlobalUnitCurrency + String.Format("{0:n}", (int)value);
             }
 
             throw new NotImplementedException();
