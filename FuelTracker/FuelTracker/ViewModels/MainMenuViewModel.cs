@@ -20,8 +20,6 @@ namespace FuelTracker.ViewModels
 
         public MainMenuViewModel()
         {
-            Title = "Fuel Tracker";
-
             Cars = new ObservableRangeCollection<Car> { };
 
             _ = Refresh();

@@ -6,6 +6,7 @@
     xmlns:model="clr-namespace:FuelTracker.Models"
     x:Class="FuelTracker.Views.MainMenuPage"
     xmlns:fontAwesome="clr-namespace:FontAwesome"
+    xmlns:helper="clr-namespace:FuelTracker.Helpers"
     BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
     x:DataType="viewmodels:MainMenuViewModel">
     <ContentPage.BindingContext>
@@ -82,7 +83,7 @@
             </CollectionView.ItemTemplate>
             <CollectionView.Header>
                 <StackLayout Style="{StaticResource HeaderBar}">
-                    <Label Style="{StaticResource Header}" Text="{Binding Title}" 
+                    <Label Style="{StaticResource Header}" Text="{helper:Translate AppName}" 
                            Padding="10" HorizontalOptions="Start"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                         <ImageButton Style="{StaticResource IconImageButton}" 
