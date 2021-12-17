@@ -73,7 +73,7 @@
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0" Grid.ColumnSpan="15" Text="Calibration" FontSize="30" Margin="0,-15"/>
-                        <Label Text="Enter the width, so that the bar is exactly filled" FontSize="20" 
+                        <Label Text="Adjust the width, so that the bar is exactly filled" FontSize="20" 
                                Grid.Row="1" Grid.ColumnSpan="10"/>
                         <Entry Text="{Binding Width}" 
                                Grid.Row="1" Grid.ColumnSpan="5" Grid.Column="10"

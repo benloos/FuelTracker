@@ -17,7 +17,7 @@ namespace FuelTracker
 
         public static string[] unitsVolume = { "L", "gal" };
         public static int selectedVolume = 0;
-        public static string GlobalUnitVolume { get => unitsCurrency[selectedVolume]; }
+        public static string GlobalUnitVolume { get => unitsVolume[selectedVolume]; }
 
         public static int GlobalUnitWidth;
         public App()

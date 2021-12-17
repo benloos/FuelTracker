@@ -13,11 +13,11 @@ namespace FuelTracker.Models
             switch (App.GlobalUnitCurrency)
             {
                 case "€":
-                    return String.Format("{0:n}", (int)value) + App.GlobalUnitCurrency;
+                    return string.Format("{0:n}\u2009", (int)value) + App.GlobalUnitCurrency;
                 case "$":
-                    return App.GlobalUnitCurrency + String.Format("{0:n}", (int)value);
+                    return App.GlobalUnitCurrency + string.Format("\u2009{0:n}", (int)value);
                 case "£":
-                    return App.GlobalUnitCurrency + String.Format("{0:n}", (int)value);
+                    return App.GlobalUnitCurrency + string.Format("\u2009{0:n}", (int)value);
             }
 
             throw new NotImplementedException();
