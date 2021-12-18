@@ -1,6 +1,7 @@
 ﻿using FuelTracker.Models;
 using FuelTracker.Services;
 using FuelTracker.Views;
+using FuelTracker.Resources;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;

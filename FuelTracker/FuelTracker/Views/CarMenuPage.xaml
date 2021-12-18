@@ -5,6 +5,7 @@
              xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
              xmlns:model="clr-namespace:FuelTracker.Models"
              xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:helper="clr-namespace:FuelTracker.Helpers"
              BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
              x:DataType="viewmodels:CarMenuViewModel">
     <ContentPage.BindingContext>
@@ -33,7 +34,7 @@
             <StackLayout Margin="10">
                 <Grid>
                     <Button Style="{StaticResource MenuButton}" 
-                            Grid.Row="0" Text="Fuel"
+                            Grid.Row="0" Text="{helper:Translate Fuel}"
                             Command="{Binding FuelCommand}">
                         <Button.ImageSource>
                             <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.GasPump}" 
@@ -41,7 +42,7 @@
                         </Button.ImageSource>
                     </Button>
                     <Button Style="{StaticResource MenuButton}" 
-                            Grid.Row="1" Text="Mileage"
+                            Grid.Row="1" Text="{helper:Translate Mileage}"
                             Command="{Binding MileageCommand}">
                         <Button.ImageSource>
                             <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Car}" 
@@ -49,7 +50,7 @@
                         </Button.ImageSource>
                     </Button>
                     <Button Style="{StaticResource MenuButton}" 
-                            Grid.Row="2" Text="Statistics"
+                            Grid.Row="2" Text="{helper:Translate Statistics}"
                             Command="{Binding StatisticsCommand}">
                         <Button.ImageSource>
                             <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.ChartBar}" 

@@ -4,6 +4,7 @@
              x:Class="FuelTracker.Views.RefuelPage"
              xmlns:fontAwesome="clr-namespace:FontAwesome"
              xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels"
+             xmlns:helper="clr-namespace:FuelTracker.Helpers"
              BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
              x:DataType="viewmodels:RefuelViewModel">
 

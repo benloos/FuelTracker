@@ -35,7 +35,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.EmptyView>
                 <StackLayout Padding="12">
-                    <Label HorizontalOptions="Center" Text="No cars" FontSize="25" FontFamily="SFPI"/>
+                    <Label HorizontalOptions="Center" Text="{helper:Translate NoCars}" FontSize="25" FontFamily="SFPI"/>
                 </StackLayout>
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>

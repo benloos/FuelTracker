@@ -1,4 +1,5 @@
 ﻿using FuelTracker.Helpers;
+using FuelTracker.Resources;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;

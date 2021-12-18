@@ -5,6 +5,7 @@
              xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
              xmlns:model="clr-namespace:FuelTracker.Models"
              xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:helper="clr-namespace:FuelTracker.Helpers"
              BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
              x:DataType="viewmodels:AddCarViewModel">
     <ContentPage.BindingContext>
@@ -24,7 +25,7 @@
             <StackLayout Style="{StaticResource HeaderBar}">
                 <Button Style="{StaticResource BackButton}" 
                         Command="{Binding GoBackCommand}"/>
-                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                <Label Style="{StaticResource Header}" Text="{helper:Translate AddCar}"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
                        Padding="10"/>
@@ -40,7 +41,7 @@
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
-                        <Label Text="Name:" FontSize="25" 
+                        <Label Text="{Binding NameLabel}" FontSize="25" 
                                Grid.Row="0" Grid.ColumnSpan="5"/>
                         <Entry Text="{Binding Name}" 
                                Grid.Row="0" Grid.ColumnSpan="10" Grid.Column="5"
@@ -58,7 +59,7 @@
                                Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="10"
                                Keyboard="Numeric" MaxLength="7" HorizontalTextAlignment="End"
                                ClearButtonVisibility="WhileEditing"/>
-                        <Label Text="Fuel Level (%):" FontSize="25" 
+                        <Label Text="{Binding LevelLabel}" FontSize="25" 
                                Grid.Row="3" Grid.ColumnSpan="10"/>
                         <Entry Text="{Binding FuelLevel}" 
                                Grid.Row="3" Grid.ColumnSpan="5" Grid.Column="10"

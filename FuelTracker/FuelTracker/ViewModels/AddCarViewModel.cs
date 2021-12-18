@@ -1,4 +1,5 @@
 ﻿using FuelTracker.Services;
+using FuelTracker.Resources;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System.Threading.Tasks;
@@ -9,23 +10,25 @@ namespace FuelTracker.ViewModels
     public class AddCarViewModel : BaseViewModel
     {
 
-        string name, mileageLabel, capacityLabel;
+        string name, mileageLabel, capacityLabel, levelLabel, nameLabel;
         int fuelLevel, tankCapacity, mileage;
         public string Name { get => name; set => SetProperty(ref name, value); }
         public int FuelLevel { get => fuelLevel; set => SetProperty(ref fuelLevel, value); }
         public int TankCapacity { get => tankCapacity; set => SetProperty(ref tankCapacity, value); }
         public int Mileage { get => mileage; set => SetProperty(ref mileage, value); }
-        public string MileageLabel { get => mileageLabel; set => SetProperty(ref mileageLabel, "Mileage (" + value + "):"); }
-        public string CapacityLabel { get => capacityLabel; set => SetProperty(ref capacityLabel, "Tank Capacity (" + value + "):"); }
+        public string NameLabel { get => nameLabel; }
+        public string MileageLabel { get => mileageLabel; }
+        public string CapacityLabel { get => capacityLabel; }
+        public string LevelLabel { get => levelLabel; }
         public AsyncCommand SaveCommand { get; }
         public AsyncCommand GoBackCommand { get; }
 
         public AddCarViewModel()
         {
-            Title = "Add Car";
-
-            MileageLabel = App.GlobalUnitDistance;
-            CapacityLabel = App.GlobalUnitVolume;
+            nameLabel = AppResources.Name + ":";
+            mileageLabel = AppResources.Mileage + " (" + App.GlobalUnitDistance + "):";
+            capacityLabel = AppResources.TankCapacity + " (" + App.GlobalUnitVolume + "):";
+            levelLabel = AppResources.FuelLevel + " (%):";
 
             SaveCommand = new AsyncCommand(Save);
             GoBackCommand = new AsyncCommand(GoBack);

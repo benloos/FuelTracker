@@ -117,7 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCar" xml:space="preserve">
+    <value>Neues Auto</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Kraftstoff-Tracker</value>
+  </data>
+  <data name="Calibration" xml:space="preserve">
+    <value>Kalibrieren</value>
+  </data>
+  <data name="CalibrationText" xml:space="preserve">
+    <value>Passe an, dass die Leiste bis auf einen Pixel rot ist</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Entfernung</value>
+  </data>
+  <data name="Fuel" xml:space="preserve">
+    <value>Kraftstoff</value>
+  </data>
+  <data name="FuelLevel" xml:space="preserve">
+    <value>Tankstand</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>Kilometerstand</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NoCars" xml:space="preserve">
+    <value>Keine Autos</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistiken</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="TankCapacity" xml:space="preserve">
+    <value>Tankinhalt</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Farbschema</value>
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volumen</value>
   </data>
 </root>

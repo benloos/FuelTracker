@@ -6,18 +6,27 @@
              xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels" 
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:model="clr-namespace:FuelTracker.Models"
+             xmlns:helper="clr-namespace:FuelTracker.Helpers"
              BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
              x:DataType="viewmodels:SettingsViewModel">
     <ContentPage.BindingContext>
         <viewmodels:SettingsViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <model:FuelPercentageConverter x:Key="FuelPercentage"/>
+            <model:FuelPercentageTester x:Key="PercentageTester"/>
+            <model:DistanceFormatConverter x:Key="DistanceFormat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Style="{StaticResource HeaderBar}">
                 <Button Style="{StaticResource BackButton}" 
                         Command="{Binding GoBackCommand}"/>
-                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                <Label Style="{StaticResource Header}" Text="{helper:Translate Settings}"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
                        Padding="10"/>
@@ -31,12 +40,13 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Text="Theme" FontSize="30" Margin="0,-15"/>
+                        <Label Grid.Row="0" Text="{helper:Translate Theme}" FontSize="30" Margin="0,-15"
+                               Grid.ColumnSpan="3"/>
                         <Button Grid.Row="1" Grid.Column="0" 
                                 Style="{StaticResource IconButton}"
                                 Command="{Binding ThemeCommand}"
                                 CommandParameter="0"
-                                Text="System">
+                                Text="{helper:Translate System}">
                             <Button.ImageSource>
                                 <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.UserCog}" 
                                                  Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
@@ -46,7 +56,7 @@
                                 Style="{StaticResource IconButton}"
                                 Command="{Binding ThemeCommand}"
                                 CommandParameter="1"
-                                Text="Light">
+                                Text="{helper:Translate Light}">
                             <Button.ImageSource>
                                 <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Sun}" 
                                                  Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
@@ -56,7 +66,7 @@
                                 Style="{StaticResource IconButton}"
                                 Command="{Binding ThemeCommand}"
                                 CommandParameter="2"
-                                Text="Dark">
+                                Text="{helper:Translate Dark}">
                             <Button.ImageSource>
                                 <FontImageSource FontFamily="FAS" Glyph="{x:Static fontAwesome:FontAwesomeIcons.Moon}" 
                                                  Size="30" Color="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"/>
@@ -72,8 +82,8 @@
                             <RowDefinition Height="65"/>
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.ColumnSpan="15" Text="Calibration" FontSize="30" Margin="0,-15"/>
-                        <Label Text="Adjust the width, so that the bar is exactly filled" FontSize="20" 
+                        <Label Grid.Row="0" Grid.ColumnSpan="15" Text="{helper:Translate Calibration}" FontSize="30" Margin="0,-15"/>
+                        <Label Text="{helper:Translate CalibrationText}" FontSize="20" 
                                Grid.Row="1" Grid.ColumnSpan="10"/>
                         <Entry Text="{Binding Width}" 
                                Grid.Row="1" Grid.ColumnSpan="5" Grid.Column="10"
@@ -83,7 +93,7 @@
                                            HorizontalOptions="Fill" CornerRadius="5">
                             <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Margin="-20" Padding="0"
                                                    HorizontalOptions="Start" VerticalOptions="Fill" 
-                                                   WidthRequest="{Binding Width}"/>
+                                                   WidthRequest="{Binding Width, Converter={StaticResource PercentageTester}}"/>
                         </Frame>
                         <Rectangle Grid.Row="2" Grid.Column="3" Style="{StaticResource Subdivider}"
                                            HorizontalOptions="End"/>
@@ -102,8 +112,8 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Text="Units" FontSize="30" Margin="0,-15"/>
-                        <Label Grid.Row="1" Text="Distance" FontSize="25"/>
+                        <Label Grid.Row="0" Text="{helper:Translate Units}" FontSize="30" Margin="0,-15,0,0"/>
+                        <Label Grid.Row="1" Text="{helper:Translate Distance}" FontSize="25"/>
                         <Picker Grid.Row="1" Grid.Column="1" 
                                 FontSize="20" HorizontalTextAlignment="End"
                                 ItemsSource="{Binding UnitsDistance}"
@@ -114,7 +124,7 @@
                                                             CommandParameter="{Binding SelectedDistance}"/>
                             </Picker.Behaviors>
                         </Picker>
-                        <Label Grid.Row="2" Text="Currency" FontSize="25"/>
+                        <Label Grid.Row="2" Text="{helper:Translate Currency}" FontSize="25"/>
                         <Picker Grid.Row="2" Grid.Column="1" 
                                 FontSize="20" HorizontalTextAlignment="End"
                                 ItemsSource="{Binding UnitsCurrency}"
@@ -125,7 +135,7 @@
                                                             CommandParameter="{Binding SelectedCurrency}"/>
                             </Picker.Behaviors>
                         </Picker>
-                        <Label Grid.Row="3" Text="Volume" FontSize="25"/>
+                        <Label Grid.Row="3" Text="{helper:Translate Volume}" FontSize="25"/>
                         <Picker Grid.Row="3" Grid.Column="1" 
                                 FontSize="20" HorizontalTextAlignment="End"
                                 ItemsSource="{Binding UnitsVolume}"
