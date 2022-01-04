@@ -41,9 +41,9 @@
             <Color x:Key="SystemGray5">#FAFAFF</Color>
             <Color x:Key="SystemGray4">#E5E5EA</Color>
             <Color x:Key="SystemGray3">#D1D1D6</Color>
-            <Color x:Key="SystemGray2">#C7C7D2</Color>
-            <Color x:Key="SystemGray1">#AEAEBB</Color>
-            <Color x:Key="SystemGray">#8E8E9C</Color>
+            <Color x:Key="SystemGray2">#CFCFDB</Color>
+            <Color x:Key="SystemGray1">#BEBECB</Color>
+            <Color x:Key="SystemGray">#AEAEBC</Color>
 
             <Color x:Key="SystemGrayDark">#8E8E93</Color>
             <Color x:Key="SystemGray1Dark">#636368</Color>
