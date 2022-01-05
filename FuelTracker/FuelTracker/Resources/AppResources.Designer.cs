@@ -88,7 +88,7 @@ namespace FuelTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adjust, so the bar is red but one pixel.
+        ///   Looks up a localized string similar to Adjust, so the full bar but one pixel is red.
         /// </summary>
         internal static string CalibrationText {
             get {

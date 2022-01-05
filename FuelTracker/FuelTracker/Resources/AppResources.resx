@@ -127,7 +127,7 @@
     <value>Calibration</value>
   </data>
   <data name="CalibrationText" xml:space="preserve">
-    <value>Adjust, so the bar is red but one pixel</value>
+    <value>Adjust, so the full bar but one pixel is red</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>Currency</value>

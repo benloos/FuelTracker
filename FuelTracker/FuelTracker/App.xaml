@@ -104,7 +104,12 @@
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="FontFamily" Value="FAS"/>
                 <Setter Property="FontSize" Value="30"/>
-                <Setter Property="Text" Value="{x:Static fontAwesome:FontAwesomeIcons.ChevronLeft}"/>
+                <Setter Property="Text">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="{x:Static fontAwesome:FontAwesomeIcons.ChevronLeft}"/>
+                        <On Platform="Android" Value="{x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}"/>
+                    </OnPlatform>
+                </Setter>
             </Style>
             
             <Style x:Key="MenuButton" TargetType="Button">
