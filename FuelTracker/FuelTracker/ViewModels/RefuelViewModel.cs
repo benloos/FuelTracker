@@ -23,9 +23,17 @@ namespace FuelTracker.ViewModels
         }
         public Car currentCar;
         public Car CurrentCar { get => currentCar; set => SetProperty(ref currentCar, value); }
+        string levelLabel;
+        int fuelLevel;
+        public int FuelLevel { get => fuelLevel; set => SetProperty(ref fuelLevel, value); }
+        public string LevelLabel { get => levelLabel; }
+        public AsyncCommand SaveCommand { get; }
         public AsyncCommand GoBackCommand { get; }
         public RefuelViewModel()
         {
+            levelLabel = AppResources.FuelLevel + " (%):";
+
+            SaveCommand = new AsyncCommand(Save);
             GoBackCommand = new AsyncCommand(GoBack);
         }
 
@@ -40,11 +48,28 @@ namespace FuelTracker.ViewModels
 
             //await Task.Delay(500);
 
-            CurrentCar = (await CarServices.GetCar(int.Parse(CarId)));
+            CurrentCar = await CarServices.GetCar(int.Parse(CarId));
 
             Title = CurrentCar.Name;
 
             IsBusy = false;
         }
+
+        async Task Save()
+        {
+            if (string.IsNullOrWhiteSpace(fuelLevel.ToString())
+                || fuelLevel < 0
+                || fuelLevel > 100)
+            {
+                return;
+            }
+
+            CurrentCar.FuelLevel = FuelLevel;
+
+            await CarServices.UpdateCar(CurrentCar);
+
+            await Shell.Current.GoToAsync("..");
+        }
+
     }
 }

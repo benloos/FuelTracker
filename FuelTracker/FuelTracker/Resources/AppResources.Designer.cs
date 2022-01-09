@@ -178,6 +178,15 @@ namespace FuelTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refuelled.
+        /// </summary>
+        internal static string Refuelled {
+            get {
+                return ResourceManager.GetString("Refuelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save {

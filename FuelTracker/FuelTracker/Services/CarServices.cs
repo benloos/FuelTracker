@@ -61,5 +61,12 @@ namespace FuelTracker.Services
 
             return car;
         }
+
+        public static async Task UpdateCar(Car car)
+        {
+            await Init();
+
+            await db.UpdateAsync(car);
+        }
     }
 }

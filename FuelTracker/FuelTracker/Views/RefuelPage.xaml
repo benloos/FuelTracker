@@ -5,13 +5,22 @@
              xmlns:fontAwesome="clr-namespace:FontAwesome"
              xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels"
              xmlns:helper="clr-namespace:FuelTracker.Helpers"
+             xmlns:model="clr-namespace:FuelTracker.Models"
              BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
              x:DataType="viewmodels:RefuelViewModel">
 
     <ContentPage.BindingContext>
         <viewmodels:RefuelViewModel/>
     </ContentPage.BindingContext>
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <model:FuelPercentageConverter x:Key="FuelPercentage"/>
+            <model:DistanceFormatConverter x:Key="DistanceFormat"/>
+            <model:CurrencyFormatConverter x:Key="CurrencyFormat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Style="{StaticResource HeaderBar}">
@@ -25,6 +34,41 @@
             </StackLayout>
             <StackLayout Margin="10">
                 <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="76"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="{Binding LevelLabel}" FontSize="25" 
+                               Grid.Row="0" Grid.ColumnSpan="10"/>
+                        <Entry Text="{Binding FuelLevel}" 
+                               Grid.Row="0" Grid.ColumnSpan="5" Grid.Column="10"
+                               Keyboard="Numeric" MaxLength="3" HorizontalTextAlignment="End"
+                               ClearButtonVisibility="WhileEditing"/>
+
+                        <Frame Grid.Row="1" Grid.ColumnSpan="15" IsClippedToBounds="True" 
+                               BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray5}, Dark={StaticResource SystemGrayDark}}" 
+                               HorizontalOptions="Fill" CornerRadius="5">
+                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" Margin="-20" Padding="0"
+                                       HorizontalOptions="Start" VerticalOptions="Fill" 
+                                       WidthRequest="{Binding FuelLevel, Converter={StaticResource FuelPercentage}}"/>
+                        </Frame>
+                        <Rectangle Grid.Row="1" Grid.Column="3" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="End" />
+                        <Rectangle Grid.Row="1" Grid.Column="7" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="Center"/>
+                        <Rectangle Grid.Row="1" Grid.Column="11" Style="{StaticResource Subdivider}"
+                                           HorizontalOptions="Start"/>
+                        <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="8"
+                                  Style="{StaticResource Check}"
+                                  Scale="1.3"/>
+                        <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="7"
+                               Text="{helper:Translate Refuelled}" FontSize="25" VerticalOptions="Center"/>
+                        <Button Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="7"
+                                Style="{StaticResource SaveButton}" 
+                                Command="{Binding SaveCommand}"/>
+                    </Grid>
                 </Frame>
             </StackLayout>
         </StackLayout>

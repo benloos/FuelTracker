@@ -156,6 +156,9 @@
   <data name="NoCars" xml:space="preserve">
     <value>Keine Autos</value>
   </data>
+  <data name="Refuelled" xml:space="preserve">
+    <value>Nachgetankt</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
   </data>
