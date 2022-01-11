@@ -124,6 +124,15 @@ namespace FuelTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distance driven.
+        /// </summary>
+        internal static string DistanceDriven {
+            get {
+                return ResourceManager.GetString("DistanceDriven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fuel.
         /// </summary>
         internal static string Fuel {
@@ -165,6 +174,15 @@ namespace FuelTracker.Resources {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Mileage.
+        /// </summary>
+        internal static string NewMileage {
+            get {
+                return ResourceManager.GetString("NewMileage", resourceCulture);
             }
         }
         

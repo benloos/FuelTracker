@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FuelTracker.Views.MileagePage"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:viewmodels="clr-namespace:FuelTracker.ViewModels"
+             xmlns:helper="clr-namespace:FuelTracker.Helpers"
+             xmlns:model="clr-namespace:FuelTracker.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray2}, Dark={StaticResource SystemGray2Dark}}"
+             x:DataType="viewmodels:MileageViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MileageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+            <model:FuelPercentageConverter x:Key="FuelPercentage"/>
+            <model:DistanceFormatConverter x:Key="DistanceFormat"/>
+            <model:CurrencyFormatConverter x:Key="CurrencyFormat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Style="{StaticResource HeaderBar}">
+                <Button Style="{StaticResource BackButton}" 
+                        Command="{Binding GoBackCommand}"/>
+                <Label Style="{StaticResource Header}" Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Padding="10"/>
+                <Button Style="{StaticResource BackButton}" Text=""/>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SystemGray4}, Dark={StaticResource SystemGray4Dark}}" CornerRadius="20" HasShadow="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <RadioButton GroupName="Mileage" Content="{helper:Translate NewMileage}" FontSize="25" 
+                               Grid.Row="0" Grid.ColumnSpan="2"
+                               BackgroundColor="Transparent">
+                            <RadioButton.Behaviors>
+                                <xct:EventToCommandBehavior Command="{Binding RadioChangedCommand}"
+                                                            EventName="CheckedChanged"
+                                                            CommandParameter="0"/>
+                            </RadioButton.Behaviors>
+                        </RadioButton>
+                        <RadioButton GroupName="Mileage" Content="{helper:Translate DistanceDriven}" FontSize="25" 
+                               Grid.Row="1" Value="1" Grid.ColumnSpan="2"
+                               BackgroundColor="Transparent">
+                            <RadioButton.Behaviors>
+                                <xct:EventToCommandBehavior Command="{Binding RadioChangedCommand}"
+                                                            EventName="CheckedChanged"
+                                                            CommandParameter="1"/>
+                            </RadioButton.Behaviors>
+                        </RadioButton>
+                        <Entry Text="{Binding Distance}" 
+                               Grid.Row="2" Grid.Column="0"
+                               Keyboard="Numeric" MaxLength="7" HorizontalTextAlignment="Start"
+                               ClearButtonVisibility="WhileEditing"/>
+                        <Button Grid.Row="2" Grid.Column="1"
+                                Style="{StaticResource SaveButton}" 
+                                Command="{Binding SaveCommand}"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

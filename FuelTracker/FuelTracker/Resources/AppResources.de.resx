@@ -138,6 +138,9 @@
   <data name="Distance" xml:space="preserve">
     <value>Entfernung</value>
   </data>
+  <data name="DistanceDriven" xml:space="preserve">
+    <value>Gefahrene Distanz</value>
+  </data>
   <data name="Fuel" xml:space="preserve">
     <value>Kraftstoff</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="NewMileage" xml:space="preserve">
+    <value>Neuer Kilometerstand</value>
   </data>
   <data name="NoCars" xml:space="preserve">
     <value>Keine Autos</value>

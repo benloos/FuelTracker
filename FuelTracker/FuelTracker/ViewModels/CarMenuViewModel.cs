@@ -48,7 +48,7 @@ namespace FuelTracker.ViewModels
 
         async Task Mileage()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync($"{nameof(MileagePage)}?SelectedId={CarId}");
         }
 
         async Task Statistics()

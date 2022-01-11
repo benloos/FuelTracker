@@ -17,6 +17,8 @@ namespace FuelTracker
 
             Routing.RegisterRoute(nameof(RefuelPage), typeof(RefuelPage));
 
+            Routing.RegisterRoute(nameof(MileagePage), typeof(MileagePage));
+
             Routing.RegisterRoute(nameof(StatisticsPage), typeof(StatisticsPage));
         }
 
